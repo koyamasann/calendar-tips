@@ -27,11 +27,11 @@ const YearProgressCard = () => {
   const getTitle = () => {
     const progressText = `${dayOfYearProgress.toFixed(2)}%`;
     if (ifIsSameDate) {
-      return `今年已经过去了${progressText}`;
+      return `今年も${progressText}が過ぎました`;
     } else {
       return `${
         currentMonth + 1
-      }月${currentDay}日在今年的进度为${progressText}`;
+      }月${currentDay}日 今年の進捗は ${progressText}`;
     }
   };
 
