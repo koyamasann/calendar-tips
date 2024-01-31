@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { atom, useAtom, useAtomValue } from 'jotai';
 import { usePreference } from './usePreference';
 import { generateDateList } from '@/libs/date';
+import { generateDay } from '@/libs/day';
 
 export const todayAtom = atom(new Date());
 export const currentMonthAtom = atom(new Date().getMonth());
@@ -43,13 +44,13 @@ const useCalendar = () => {
 
   const getDaysInMonth = (month: number, year: number) => {
     const date = new Date();
-    date.setMonth(month + 1);
+    date.setMonth(month);
     date.setFullYear(year);
     date.setDate(0);
     return date.getDate();
   };
 
-  const dateList = useMemo(() => {
+  const dayList = useMemo(() => {
     const daysInMonth = getDaysInMonth(currentMonth, currentYear);
     const startDateTime = new Date(currentYear, currentMonth, 1);
     const endDateTime = new Date(currentYear, currentMonth, daysInMonth);
@@ -59,7 +60,12 @@ const useCalendar = () => {
       endDateTime,
       firstDayOfWeek
     );
-    return dateList;
+
+    const dayList = dateList.map((date) => {
+      return generateDay(date, [startDateTime, endDateTime]);
+    });
+
+    return dayList;
   }, [currentMonth, currentYear, firstDayOfWeek]);
 
   return {
@@ -72,7 +78,7 @@ const useCalendar = () => {
     handleNextYear,
     setCurrentMonth,
     setCurrentYear,
-    dateList,
+    dayList,
   };
 };
 
