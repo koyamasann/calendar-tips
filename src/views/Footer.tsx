@@ -126,7 +126,7 @@ export const Footer = () => {
     <div className='relative flex items-center justify-between h-8 md:h-10'>
       <div className='relative flex items-center h-full px-4 py-1 overflow-hidden text-sm rounded-full cursor-default group bg-slate-100 dark:bg-black/40 dark:text-zinc-200'>
         <span className='transition-all duration-200 group-hover:-translate-y-full group-hover:opacity-0'>
-          光阴荏苒，日月如梭
+          時の流れ 一期一会
         </span>
         <span className='absolute transition-all duration-200 -translate-x-1/2 translate-y-full opacity-0 left-1/2 text-nowrap group-hover:translate-y-0 group-hover:opacity-100'>
           A Project By{' '}
